@@ -1,0 +1,4 @@
+*.sublime-workspace
+*.log
+*near-printer-bundle.js
+node_modules
