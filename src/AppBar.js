@@ -11,8 +11,8 @@ class AppBarExample extends React.Component {
 	render() {
 		return (
 			<AppBar title="Near Printer"
-					iconElementLeft={<IconButton><PrintIcon /></IconButton>}
-					iconClassNameRight="muidocs-icon-navigation-expand-more"></AppBar>
+					iconElementLeft={<IconButton href={"/"}><PrintIcon /></IconButton>}>
+					</AppBar>
 	    )
 	}
 }
