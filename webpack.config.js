@@ -1,7 +1,13 @@
+
+
 module.exports = {
-  	entry : './src/app.js',
+  	entry : {
+  		app : './src/app.js',
+  		newPrinter : './src/newPrinter.js'
+  	},
     output : {
-    	filename: 'public/near-printer-bundle.js'
+    	path: "public",
+    	filename: '[name].bundle.js'
     },
     module: {
 	  loaders: [

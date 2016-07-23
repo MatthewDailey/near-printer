@@ -1,5 +1,5 @@
 *.sublime-workspace
 *.log
-*near-printer-bundle.js
+*bundle.js
 node_modules
 *.pyc
