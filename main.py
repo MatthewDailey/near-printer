@@ -26,7 +26,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENVIRONMENT.get_template('index.html')
-        self.response.write(template.render({}))
+        self.response.write(template.render({"reactApplicationJs": "public/near-printer-bundle.js"}))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
