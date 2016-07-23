@@ -23,15 +23,16 @@ JINJA_ENVIRONMENT = jinja2.Environment(
       extensions=['jinja2.ext.autoescape'],
       autoescape=True)
 
+def reactTemplate():
+	return JINJA_ENVIRONMENT.get_template('index.html')
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        template = JINJA_ENVIRONMENT.get_template('index.html')
-        self.response.write(template.render({"reactApplicationJs": "public/app.bundle.js"}))
+        self.response.write(reactTemplate().render({"reactApplicationJs": "public/app.bundle.js"}))
 
 class NewPrinter(webapp2.RequestHandler):
     def get(self):
-        template = JINJA_ENVIRONMENT.get_template('index.html')
-        self.response.write(template.render({"reactApplicationJs": "public/newPrinter.bundle.js"}))
+        self.response.write(reactTemplate().render({"reactApplicationJs": "public/newPrinter.bundle.js"}))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
