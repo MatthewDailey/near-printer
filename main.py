@@ -48,13 +48,13 @@ class NewPrinter(webapp2.RequestHandler):
         self.response.write(reactTemplate().render({
             "reactApplicationJs": "public/simpleContent.bundle.js",
             "logoutUrl" : logoutUrl,
-            "simpleContent" : "You must be an admin to access this page."}))
+            "simpleContent" : "You must be an admin to add a public printer."}))
     else:
       loginUrl = users.create_login_url(self.request.uri)
       self.response.write(reactTemplate().render({
           "reactApplicationJs": "public/simpleContent.bundle.js",
           "loginUrl" : loginUrl,
-          "simpleContent" : "Please login."}))
+          "simpleContent" : "Please login to add a new public printer."}))
 # [END Page rendering]
 
 app = webapp2.WSGIApplication([
