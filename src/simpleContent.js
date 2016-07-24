@@ -9,10 +9,12 @@ const style = {
 	height : "20px"
 };
 
+const simpleContent = document.getElementById("injectedData").getAttribute("simpleContent");
+
 RenderReactApp(
 	<Grid>
 	    <Row center="xs">
-	      	<p>Please log in on the upper right.</p>
+	      	<p>{simpleContent}</p>
 	    </Row>
   	</Grid>
   )

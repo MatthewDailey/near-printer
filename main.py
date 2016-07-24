@@ -40,10 +40,21 @@ class NewPrinter(webapp2.RequestHandler):
     user = users.get_current_user()
     if user:
       logoutUrl = users.create_logout_url(self.request.uri)
-      self.response.write(reactTemplate().render({"reactApplicationJs": "public/newPrinter.bundle.js", "logoutUrl" : logoutUrl}))
+      if users.is_current_user_admin():
+        self.response.write(reactTemplate().render({
+            "reactApplicationJs": "public/newPrinter.bundle.js",
+            "logoutUrl" : logoutUrl}))
+      else:
+        self.response.write(reactTemplate().render({
+            "reactApplicationJs": "public/simpleContent.bundle.js",
+            "logoutUrl" : logoutUrl,
+            "simpleContent" : "You must be an admin to access this page."}))
     else:
       loginUrl = users.create_login_url(self.request.uri)
-      self.response.write(reactTemplate().render({"reactApplicationJs": "public/login.bundle.js", "loginUrl" : loginUrl}))
+      self.response.write(reactTemplate().render({
+          "reactApplicationJs": "public/simpleContent.bundle.js",
+          "loginUrl" : loginUrl,
+          "simpleContent" : "Please login."}))
 # [END Page rendering]
 
 app = webapp2.WSGIApplication([

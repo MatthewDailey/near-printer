@@ -34,7 +34,6 @@ const getLogInOutButton = () => {
 
 class AppBarExample extends React.Component {
 	render() {
-
 		return (
 			<AppBar title="Near Printer"
 					iconElementLeft = {<IconButton href={"/"}><PrintIcon /></IconButton>}
