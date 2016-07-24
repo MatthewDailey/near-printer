@@ -6,14 +6,15 @@ import MapContainer from './MapContainer'
 import AppBar from './AppBar'
 
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import {green500} from 'material-ui/styles/colors';
+import {white, green100, green500} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const muiTheme = getMuiTheme({
   appBar: {
-    height: 50,
-    color: green500
-
+    height: 50
+  },
+  palette: {
+    primary1Color: green500,
   }
 });
 

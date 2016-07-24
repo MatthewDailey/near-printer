@@ -10,15 +10,20 @@ import PrintIcon from 'material-ui/svg-icons/action/print'
 const logoutUrl = document.getElementById("injectedData").getAttribute("logoutUrl");
 const loginUrl = document.getElementById("injectedData").getAttribute("loginUrl");
 
+const buttonStyle = {
+
+		color : white
+}
+
 class LoginButton extends React.Component {
 	render() {
-		return <FlatButton label="Log In" href={loginUrl}/>;
+		return <FlatButton label="Log In" href={loginUrl} style={buttonStyle}/>;
 	}
 }
 
 class LogoutButton extends React.Component {
 	render() {
-		return <FlatButton label="Log Out" href={logoutUrl} />;
+		return <FlatButton label="Log Out" href={logoutUrl} style={buttonStyle}/>;
 	}
 }
 

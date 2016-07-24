@@ -16,7 +16,7 @@ class NewPrinterForm extends React.Component {
 		return (
 			<Grid >
 				<Row>
-					<Col xs={6} xsOffset={3}>
+					<Col xs={12} md={8} mdOffset={2}>
 						<Row>
 							<TextField
 								ref="locationInput"
