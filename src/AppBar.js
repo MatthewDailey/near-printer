@@ -3,15 +3,42 @@ import AppBar from 'material-ui/AppBar';
 
 import {white} from 'material-ui/styles/colors';
 
+import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
 import PrintIcon from 'material-ui/svg-icons/action/print'
 
+const logoutUrl = document.getElementById("injectedData").getAttribute("logoutUrl");
+const loginUrl = document.getElementById("injectedData").getAttribute("loginUrl");
+
+class LoginButton extends React.Component {
+	render() {
+		return <FlatButton label="Log In" href={loginUrl}/>;
+	}
+}
+
+class LogoutButton extends React.Component {
+	render() {
+		return <FlatButton label="Log Out" href={logoutUrl} />;
+	}
+}
+
+const getLogInOutButton = () => {
+	console.log(logoutUrl)
+	console.log(loginUrl)
+	if (logoutUrl) {
+		return <LogoutButton />
+	} else if (loginUrl) {
+		return <LoginButton />
+	}
+}
 
 class AppBarExample extends React.Component {
 	render() {
+
 		return (
 			<AppBar title="Near Printer"
-					iconElementLeft={<IconButton href={"/"}><PrintIcon /></IconButton>}>
+					iconElementLeft = {<IconButton href={"/"}><PrintIcon /></IconButton>}
+					iconElementRight = {getLogInOutButton()}>
 					</AppBar>
 	    )
 	}

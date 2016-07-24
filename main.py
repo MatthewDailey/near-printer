@@ -18,21 +18,33 @@ import webapp2
 import jinja2
 import os
 
+from google.appengine.api import users
+from google.appengine.ext import ndb
+
 JINJA_ENVIRONMENT = jinja2.Environment(
       loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
       extensions=['jinja2.ext.autoescape'],
       autoescape=True)
 
+
+# [START Page rendering]
 def reactTemplate():
 	return JINJA_ENVIRONMENT.get_template('index.html')
 
 class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write(reactTemplate().render({"reactApplicationJs": "public/app.bundle.js"}))
+  def get(self):
+    self.response.write(reactTemplate().render({"reactApplicationJs": "public/app.bundle.js"}))
 
 class NewPrinter(webapp2.RequestHandler):
-    def get(self):
-        self.response.write(reactTemplate().render({"reactApplicationJs": "public/newPrinter.bundle.js"}))
+  def get(self):
+    user = users.get_current_user()
+    if user:
+      logoutUrl = users.create_logout_url(self.request.uri)
+      self.response.write(reactTemplate().render({"reactApplicationJs": "public/newPrinter.bundle.js", "logoutUrl" : logoutUrl}))
+    else:
+      loginUrl = users.create_login_url(self.request.uri)
+      self.response.write(reactTemplate().render({"reactApplicationJs": "public/login.bundle.js", "loginUrl" : loginUrl}))
+# [END Page rendering]
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),

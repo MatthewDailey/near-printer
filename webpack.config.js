@@ -3,7 +3,8 @@
 module.exports = {
   	entry : {
   		app : './src/app.js',
-  		newPrinter : './src/newPrinter.js'
+  		newPrinter : './src/newPrinter.js',
+  		login : "./src/login.js"
   	},
     output : {
     	path: "public",
