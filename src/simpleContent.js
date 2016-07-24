@@ -1,8 +1,7 @@
 import React from 'react'
 import RenderReactApp from './RenderReactApp'
 
-import RaisedButton from 'material-ui/RaisedButton';
-import {Container, Grid, Col, Row} from 'react-flexbox-grid/lib';
+import {Grid, Row} from 'react-flexbox-grid/lib';
 
 const style = {
 	backgroundColor : "#FEFEFE",
