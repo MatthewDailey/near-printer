@@ -38,15 +38,12 @@ class MapContainer extends React.Component {
 			const mapRef = this.refs.map;
 			const node = ReactDOM.findDOMNode(mapRef);
 
-			let zoom = this.getZoom()
-			let lat = 37.7606271;
-			let lng = -122.4427809;
-			const center = new maps.LatLng(lat, lng);
+			const zoom = this.getZoom();
+			const center = new maps.LatLng(37.7606271, -122.4427809);
 			const mapConfig = Object.assign({}, {
 				center: center,
 				zoom: zoom
 			});
-
 
 			const map = new maps.Map(node, mapConfig);
 
@@ -72,17 +69,13 @@ class MapContainer extends React.Component {
 			    request.send(); //send the request
 			  });
 
-			  console.log('Asynchronous request made.');
-
 			  promise.then(function(data) {
-			    console.log('Got data! Promise fulfilled.');
 			    const printers = JSON.parse(data);
 
 			    for (let printerKey in printers) {
 			    	const printer = printers[printerKey];
-			    	console.log(printer)
-			    	lat = printer.lat;
-			    	lng = printer.lon;
+			    	const lat = printer.lat;
+			    	const lng = printer.lon;
 			    	var printerPosition = {lat, lng}
 
 					const printerMarker = new google.maps.Marker({
@@ -117,7 +110,7 @@ class MapContainer extends React.Component {
 			    console.log(error.message);
 			  });
 			} else {
-			  console.log('Promise not available');
+			  console.log('Promise not available, not loading printer information.');
 			}
 
 
