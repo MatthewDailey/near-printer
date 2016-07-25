@@ -66,8 +66,22 @@ class NewPrinterForm extends React.Component {
 								    />
 							</Col>
 						</Row>
+							<h2>Or use JSON</h2>
 						<Row center="xs">
-							<RaisedButton label="Submit" style={buttonStyle} />
+							<RaisedButton ref="submitSinglePrinter" label="Submit" style={buttonStyle} />
+						</Row>
+						<Row center="xs">
+						</Row>
+						<Row >
+							<TextField
+								ref="jsonInput"
+							    hintText="[{...."
+							    floatingLabelText="JSON List of Printers"
+							    fullWidth="true"
+							    />
+						</Row>
+						<Row center="xs">
+							<RaisedButton ref="submitJsonPrinter" label="Submit" style={buttonStyle} />
 						</Row>
 					</Col>
 				</Row>
