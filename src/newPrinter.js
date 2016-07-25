@@ -74,20 +74,6 @@ class NewPrinterForm extends React.Component {
 						<Row center="xs">
 							<RaisedButton ref="submitSinglePrinter" label="Submit" onTouchTap={this.handleSubmitSinglePrinter} style={buttonStyle} />
 						</Row>
-						<h2>Or use JSON</h2>
-						<Row center="xs">
-						</Row>
-						<Row >
-							<TextField
-								ref="jsonInput"
-							    hintText="[{...."
-							    floatingLabelText="JSON List of Printers"
-							    fullWidth="true"
-							    />
-						</Row>
-						<Row center="xs">
-							<RaisedButton ref="submitJsonPrinter" label="Submit" style={buttonStyle} />
-						</Row>
 					</Col>
 				</Row>
 			</Grid>
