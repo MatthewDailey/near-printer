@@ -10,14 +10,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
-const customContentStyle = {
-  width: '100%',
-  maxWidth: 'none',
-};
 
-/**
- * The dialog width has been set to occupy the full width of browser through the `contentStyle` property.
- */
 class EasyPrintButton extends React.Component {
 	constructor(props) {
     	super(props);
@@ -38,12 +31,12 @@ class EasyPrintButton extends React.Component {
   	render() {
 	    const actions = [
 	      <FlatButton
-	        label="Cancel"
+	        label="No Thanks."
 	        primary={true}
 	        onTouchTap={this.handleClose}
 	      />,
 	      <FlatButton
-	        label="Submit"
+	        label="Sounds good!"
 	        primary={true}
 	        onTouchTap={this.handleClose}
 	      />,
@@ -53,13 +46,11 @@ class EasyPrintButton extends React.Component {
 	      <div>
 	        <RaisedButton label="The Easy Print Button" onTouchTap={this.handleEasyButtonClicked} style={fixedElementsStyle} />
 	        <Dialog
-	          title="Dialog With Custom Width"
+	          title="The Easy Way To Print"
 	          actions={actions}
 	          modal={true}
-	          contentStyle={customContentStyle}
-	          open={this.state.isEasyPrintDialogOpen}
-	        >
-	          This dialog spans the entire width of the screen.
+	          open={this.state.isEasyPrintDialogOpen}>
+	          <p>For <b>$10</b> we will print and deliver up to <b>100 color pages</b> with in <b>1 hour</b> to anywhere in San Francisco.</p>
 	        </Dialog>
 	      </div>
 	    );
@@ -88,6 +79,5 @@ const handleClickedEasyButton = () => {
 RenderReactApp(
 	<div style={containerStyle}>
 		<MapContainer />
-
 		<EasyPrintButton />
 	</div>)
