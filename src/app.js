@@ -77,10 +77,6 @@ const fixedElementsStyle = {
 	height: 100
 }
 
-const handleClickedEasyButton = () => {
-	console.log("Clicked easy print button.");
-}
-
 RenderReactApp(
 	<div style={containerStyle}>
 		<MapContainer />
