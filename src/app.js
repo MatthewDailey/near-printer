@@ -62,13 +62,6 @@ class EasyPrintButton extends React.Component {
   	}
 }
 
-
-const containerStyle = {
-	position: "relative",
-	width: '100vw',
-	height: '100vh'
-}
-
 const fixedElementsStyle = {
 	position: "absolute",
 	right: 100,
@@ -78,7 +71,7 @@ const fixedElementsStyle = {
 }
 
 RenderReactApp(
-	<div style={containerStyle}>
+	<div>
 		<MapContainer />
 		<EasyPrintButton />
 	</div>)
