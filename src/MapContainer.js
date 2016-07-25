@@ -70,17 +70,36 @@ class MapContainer extends React.Component {
 			    const printers = JSON.parse(data);
 
 			    for (let printerKey in printers) {
-			    	var printer = printers[printerKey];
+			    	const printer = printers[printerKey];
 			    	console.log(printer)
 			    	lat = printer.lat;
 			    	lng = printer.lon;
 			    	var printerPosition = {lat, lng}
 
-					const easyButtonMarker = new google.maps.Marker({
+					const printerMarker = new google.maps.Marker({
 					    position: printerPosition,
 					    map: map,
 					    title: 'Hello World!',
 					    animation: google.maps.Animation.DROP
+					});
+
+					var contentString = '<div id="content">'+
+					      '<div id="siteNotice">'+
+					      '</div>'+
+					      '<h1 id="firstHeading" class="firstHeading">'+printer.title+'</h1>'+
+					      '<div id="bodyContent">'+
+					      '<p><b>Cost:</b> ' + printer.cost + "</p>" +
+					      '<p><b>Hours:</b> ' + printer.hours + "</p>" +
+					      '<p><b>Phone:</b> ' + printer.phone + "</p>" +
+					      '</div>'+
+					      '</div>';
+
+					const infowindow = new google.maps.InfoWindow({
+						content: contentString
+					});
+
+					printerMarker.addListener('click', function() {
+						infowindow.open(map, printerMarker);
 					});
 			    }
 
