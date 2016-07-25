@@ -21,6 +21,15 @@ class MapContainer extends React.Component {
 		}
 	}
 
+	getZoom() {
+		console.log(window.innerWidth)
+		if (window.innerWidth > 1500) {
+			return 14;
+		} else {
+			return 13;
+		}
+	}
+
 	loadMap() {
 		if (this.props && this.props.google) {
 			const {google} = this.props;
@@ -29,9 +38,9 @@ class MapContainer extends React.Component {
 			const mapRef = this.refs.map;
 			const node = ReactDOM.findDOMNode(mapRef);
 
-			let zoom = 14;
-			let lat = 37.7773248;
-			let lng = -122.4110832;
+			let zoom = this.getZoom()
+			let lat = 37.7606271;
+			let lng = -122.4427809;
 			const center = new maps.LatLng(lat, lng);
 			const mapConfig = Object.assign({}, {
 				center: center,
