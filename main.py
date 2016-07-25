@@ -35,6 +35,10 @@ class MainHandler(webapp2.RequestHandler):
   def get(self):
     self.response.write(reactTemplate().render({"reactApplicationJs": "public/app.bundle.js"}))
 
+class PrintRequest(webapp2.RequestHandler):
+  def get(self):
+    self.response.write(reactTemplate().render({"reactApplicationJs": "public/printRequest.bundle.js"}))
+
 class NewPrinter(webapp2.RequestHandler):
   def get(self):
     user = users.get_current_user()
@@ -59,5 +63,6 @@ class NewPrinter(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/newPrinter', NewPrinter)
+    ('/newPrinter', NewPrinter),
+    ('/easyPrint', PrintRequest)
 ], debug=True)

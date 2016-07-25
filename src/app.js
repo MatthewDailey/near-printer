@@ -20,13 +20,18 @@ class EasyPrintButton extends React.Component {
   	}
 
   	handleEasyButtonClicked() {
+  		window.location = '#easyPrint';
     	this.setState({isEasyPrintDialogOpen: true});
   	};
 
   	handleClose() {
-
+  		window.location = '#';
     	this.setState({isEasyPrintDialogOpen: false});
   	};
+
+  	handleWantsEasyPrint() {
+  		window.location = "/easyPrint"
+  	}
 
   	render() {
 	    const actions = [
@@ -38,7 +43,7 @@ class EasyPrintButton extends React.Component {
 	      <FlatButton
 	        label="Sounds good!"
 	        primary={true}
-	        onTouchTap={this.handleClose}
+	        onTouchTap={this.handleWantsEasyPrint}
 	      />,
 	    ];
 
