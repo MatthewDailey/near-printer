@@ -26,6 +26,36 @@ JINJA_ENVIRONMENT = jinja2.Environment(
       extensions=['jinja2.ext.autoescape'],
       autoescape=True)
 
+class Printer(ndb.Model):
+  title = ndb.StringProperty(indexed=False)
+  cost = ndb.StringProperty(indexed=False)
+  hours = ndb.StringProperty(indexed=False)
+  phone = ndb.StringProperty(indexed=False)
+  lat = ndb.FloatProperty(indexed=False)
+  lon = ndb.FloatProperty(indexed=False)
+
+class RecordNewPrinterHandler(webapp2.RequestHandler):
+  def get(self):
+    if users.is_current_user_admin():
+      newPrinter = Printer()
+      newPrinter.title = self.request.get('title')
+      if newPrinter.title == '':
+        raise "No title"
+      newPrinter.cost = self.request.get('cost')
+      if newPrinter.cost == '':
+        raise "No cost"
+      newPrinter.hours = self.request.get('hours')
+      if newPrinter.hours == '':
+        raise "No hours"
+      newPrinter.phone = self.request.get('phone')
+      if newPrinter.phone == '':
+        raise "No phone"
+      newPrinter.lat = float(self.request.get('lat'))
+      newPrinter.lon = float(self.request.get('lon'))
+      newPrinter.put()
+      self.redirect("/newPrinter")
+    else:
+      raise "Log in as admin"
 
 # [START Page rendering]
 def reactTemplate():
@@ -64,5 +94,6 @@ class NewPrinter(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/newPrinter', NewPrinter),
-    ('/easyPrint', PrintRequest)
+    ('/easyPrint', PrintRequest),
+    ('/recordNewPrinter', RecordNewPrinterHandler)
 ], debug=True)

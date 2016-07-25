@@ -12,6 +12,11 @@ const buttonStyle = {
 
 
 class NewPrinterForm extends React.Component {
+	constructor(props) {
+    	super(props);
+    	this.handleSubmitSinglePrinter = this.handleSubmitSinglePrinter.bind(this);
+  	}
+
 	render() {
 		return (
 			<Grid >
@@ -66,10 +71,10 @@ class NewPrinterForm extends React.Component {
 								    />
 							</Col>
 						</Row>
-							<h2>Or use JSON</h2>
 						<Row center="xs">
-							<RaisedButton ref="submitSinglePrinter" label="Submit" style={buttonStyle} />
+							<RaisedButton ref="submitSinglePrinter" label="Submit" onTouchTap={this.handleSubmitSinglePrinter} style={buttonStyle} />
 						</Row>
+						<h2>Or use JSON</h2>
 						<Row center="xs">
 						</Row>
 						<Row >
@@ -87,6 +92,17 @@ class NewPrinterForm extends React.Component {
 				</Row>
 			</Grid>
 		)
+	}
+
+	handleSubmitSinglePrinter() {
+		console.log("handleSubmitSinglePrinter");
+		window.location.href = "/recordNewPrinter"
+			+ "?title=" + encodeURIComponent(this.refs.locationInput.getValue())
+			+ "&cost=" + encodeURIComponent(this.refs.costInput.getValue())
+			+ "&hours=" + encodeURIComponent(this.refs.hoursInput.getValue())
+			+ "&phone=" + encodeURIComponent(this.refs.phoneInput.getValue())
+			+ "&lat=" + encodeURIComponent(this.refs.lat.getValue())
+			+ "&lon=" + encodeURIComponent(this.refs.lon.getValue())
 	}
 
 	componentDidMount() {
