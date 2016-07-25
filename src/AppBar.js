@@ -28,8 +28,6 @@ class LogoutButton extends React.Component {
 }
 
 const getLogInOutButton = () => {
-	console.log(logoutUrl)
-	console.log(loginUrl)
 	if (logoutUrl) {
 		return <LogoutButton />
 	} else if (loginUrl) {
