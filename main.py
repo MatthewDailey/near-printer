@@ -17,6 +17,7 @@
 import webapp2
 import jinja2
 import os
+import json
 
 from google.appengine.api import users
 from google.appengine.ext import ndb
@@ -57,6 +58,13 @@ class RecordNewPrinterHandler(webapp2.RequestHandler):
     else:
       raise "Log in as admin"
 
+class GetPrintersHandler(webapp2.RequestHandler):
+  def get(self):
+    allPrinters = []
+    for printer in Printer.query().fetch(100):
+      allPrinters += [{"title" : printer.title, "cost" : printer.cost, "hours": printer.hours, "phone": printer.phone, "lat": printer.lat, "lon":printer.lon}]
+    self.response.out.write(json.dumps(allPrinters))
+
 # [START Page rendering]
 def reactTemplate():
 	return JINJA_ENVIRONMENT.get_template('index.html')
@@ -95,5 +103,6 @@ app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/newPrinter', NewPrinter),
     ('/easyPrint', PrintRequest),
-    ('/recordNewPrinter', RecordNewPrinterHandler)
+    ('/recordNewPrinter', RecordNewPrinterHandler),
+    ('/getPrinters', GetPrintersHandler)
 ], debug=True)
