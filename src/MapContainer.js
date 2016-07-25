@@ -29,15 +29,28 @@ class MapContainer extends React.Component {
 			const node = ReactDOM.findDOMNode(mapRef);
 
 			let zoom = 14;
-			let lat = 37.774929;
-			let lng = -122.419416;
+			let lat = 37.7773248;
+			let lng = -122.4110832;
 			const center = new maps.LatLng(lat, lng);
 			const mapConfig = Object.assign({}, {
 				center: center,
 				zoom: zoom
 			});
 
+
 			this.map = new maps.Map(node, mapConfig);
+
+			const easyButtonMarker = new google.maps.Marker({
+			    position: {lat, lng},
+			    map: this.map,
+			    title: 'Hello World!',
+			    animation: google.maps.Animation.DROP
+			  });
+
+			easyButtonMarker.addListener('click', function() {
+		        alert("clicked easyButton")
+	        });
+
 		}
 	}
 }
