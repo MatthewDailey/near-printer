@@ -7,7 +7,8 @@ class MapContainer extends React.Component {
 	render() {
 		const style = {
 			width: '100vw',
-			height:  '100vh',
+			top: 0,
+			bottom: 0,
 			position: 'absolute'
 		}
 		return (
