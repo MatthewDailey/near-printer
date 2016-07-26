@@ -54,6 +54,14 @@ class NewPrinterForm extends React.Component {
 							    />
 						</Row>
 						<Row>
+							<TextField
+								ref="urlInput"
+							    hintText="http://www.google.com/map/place/Fedex..."
+							    floatingLabelText="Google Maps URL"
+							    fullWidth="true"
+							    />
+						</Row>
+						<Row>
 							<Col xs={6}>
 								<TextField
 									ref="lat"
@@ -89,6 +97,7 @@ class NewPrinterForm extends React.Component {
 			+ "&phone=" + encodeURIComponent(this.refs.phoneInput.getValue())
 			+ "&lat=" + encodeURIComponent(this.refs.lat.getValue())
 			+ "&lon=" + encodeURIComponent(this.refs.lon.getValue())
+			+ "&url=" + encodeURIComponent(this.refs.urlInput.getValue())
 	}
 
 	componentDidMount() {

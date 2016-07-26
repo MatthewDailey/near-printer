@@ -32,6 +32,7 @@ class Printer(ndb.Model):
   cost = ndb.StringProperty(indexed=False)
   hours = ndb.StringProperty(indexed=False)
   phone = ndb.StringProperty(indexed=False)
+  url = ndb.StringProperty(indexed=False)
   lat = ndb.FloatProperty(indexed=False)
   lon = ndb.FloatProperty(indexed=False)
 
@@ -51,6 +52,9 @@ class RecordNewPrinterHandler(webapp2.RequestHandler):
       newPrinter.phone = self.request.get('phone')
       if newPrinter.phone == '':
         raise "No phone"
+      newPrinter.url = self.request.get('url')
+      if newPrinter.url == '':
+        raise "No url"
       newPrinter.lat = float(self.request.get('lat'))
       newPrinter.lon = float(self.request.get('lon'))
       newPrinter.put()
@@ -62,7 +66,7 @@ class GetPrintersHandler(webapp2.RequestHandler):
   def get(self):
     allPrinters = []
     for printer in Printer.query().fetch(100):
-      allPrinters += [{"title" : printer.title, "cost" : printer.cost, "hours": printer.hours, "phone": printer.phone, "lat": printer.lat, "lon":printer.lon}]
+      allPrinters += [{"title" : printer.title, "cost" : printer.cost, "hours": printer.hours, "phone": printer.phone, "lat": printer.lat, "lon":printer.lon, "url":printer.url}]
     self.response.out.write(json.dumps(allPrinters))
 
 # [START Page rendering]

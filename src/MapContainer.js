@@ -77,12 +77,13 @@ class MapContainer extends React.Component {
 			    	const printer = printers[printerKey];
 			    	const lat = printer.lat;
 			    	const lng = printer.lon;
+			    	const url = printer.url;
 			    	var printerPosition = {lat, lng}
 
 					const printerMarker = new google.maps.Marker({
 					    position: printerPosition,
 					    map: map,
-					    title: 'Hello World!',
+					    title: printer.title,
 					    animation: google.maps.Animation.DROP
 					});
 
@@ -94,6 +95,7 @@ class MapContainer extends React.Component {
 					      '<p><b>Cost:</b> ' + printer.cost + "</p>" +
 					      '<p><b>Hours:</b> ' + printer.hours + "</p>" +
 					      '<p><b>Phone:</b> ' + printer.phone + "</p>" +
+					      '<p><a target="_blank" href=\"'+ printer.url +'\">View in Google maps.</a>' +
 					      '</div>'+
 					      '</div>';
 
