@@ -3,6 +3,7 @@ import React from 'react'
 import RenderReactApp from './RenderReactApp'
 
 import MapContainer from './MapContainer'
+import FirstVisitDialog from './FirstVisitDialog'
 
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -72,6 +73,7 @@ const fixedElementsStyle = {
 
 RenderReactApp(
 	<div>
+		<FirstVisitDialog />
 		<MapContainer />
 		<EasyPrintButton />
 	</div>)

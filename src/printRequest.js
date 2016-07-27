@@ -51,6 +51,28 @@ function createMarkup() { return {__html: "<!-- Begin MailChimp Signup Form -->"
 	+ "<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>"
 	+ "<!--End mc_embed_signup-->"}; };
 
+function addConversionTracking() {
+	return {__html : "<!-- Google Code for Would Purchase Printing Conversion Page -->"
+	+ "<script type=\"text/javascript\">"
+	+ "/* <![CDATA[ */"
+	+ "var google_conversion_id = 957922460;"
+	+ "var google_conversion_language = \"en\";"
+	+ "var google_conversion_format = \"3\";"
+	+ "var google_conversion_color = \"ffffff\";"
+	+ "var google_conversion_label = \"5pYiCODpwmgQnPniyAM\";"
+	+ "var google_remarketing_only = false;"
+	+ "/* ]]> */"
+	+ "</script>"
+	+ "<script type=\"text/javascript\" src=\"//www.googleadservices.com/pagead/conversion.js\">"
+	+ "</script>"
+	+ "<noscript>"
+	+ "<div style=\"display:inline;\">"
+	+ "<img height=\"1\" width=\"1\" style=\"border-style:none;\" alt=\"\" src=\"//www.googleadservices.com/pagead/conversion/957922460/?label=5pYiCODpwmgQnPniyAM&amp;guid=ON&amp;script=0\"/>"
+	+ "</div>"
+	+ "</noscript>"
+	};
+}
+
 class NewPrinterForm extends React.Component {
 	render() {
 		return (
@@ -65,6 +87,7 @@ class NewPrinterForm extends React.Component {
 						<br/>
 						<br/>
 						<div dangerouslySetInnerHTML={createMarkup()} />
+						<div dangerouslySetInnerHTML={addConversionTracking()} />
 					</Col>
 				</Row>
 			</Grid>
