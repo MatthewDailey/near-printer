@@ -42,7 +42,7 @@ class FirstVisitDialog extends React.Component {
 	    return (
 	      <div>
 	        <Dialog
-	          title="Welcome to Near Printer. 🖨"
+	          title="Welcome to Near Printer! 🖨"
 	          actions={actions}
 	          modal={true}
 	          open={this.state.isDialogOpen}>
